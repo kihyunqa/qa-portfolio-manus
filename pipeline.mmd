@@ -1,0 +1,18 @@
+graph TD
+    A[기능 명세 입력] --> B{Manus AI & MCP}
+    B --> C[TC 자동 생성]
+    C --> D[filesystem MCP]
+    D --> E[testcase_*.md 저장]
+    
+    B --> F[E2E 테스트 실행]
+    F --> G[playwright MCP]
+    G --> H[portfolio_check.spec.js]
+    
+    B --> I[결과 배포 및 알림]
+    I --> J[github MCP]
+    J --> K[qa-portfolio-manus 커밋]
+    
+    style B fill:#2E5BFF,color:#fff,stroke:#000,stroke-width:2px
+    style E fill:#f9f,stroke:#333,stroke-width:2px
+    style H fill:#f9f,stroke:#333,stroke-width:2px
+    style K fill:#f9f,stroke:#333,stroke-width:2px
