@@ -3,307 +3,509 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>성기현 · QA Engineer Portfolio (Manus Edition)</title>
+    <title>성기현 · QA Engineer · AI & MCP Automation</title>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #2E5BFF;
-            --light-blue: #e0e7ff;
-            --dark-gray: #333;
-            --medium-gray: #666;
-            --light-gray: #f0f2f5;
-            --white: #fff;
-            --border-color: #eee;
+            --bg-color: #0a0a0c;
+            --card-bg: #16161a;
+            --primary-purple: #a855f7;
+            --primary-blue: #3b82f6;
+            --text-main: #f3f4f6;
+            --text-sub: #9ca3af;
+            --accent-green: #10b981;
+            --border-color: #262626;
         }
-        body { font-family: 'Pretendard', sans-serif; line-height: 1.6; color: var(--dark-gray); margin: 0; padding: 0; background-color: var(--light-gray); }
-        .container { max-width: 1200px; margin: 30px auto; background: var(--white); border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); overflow: hidden; }
-        
-        /* Header Section */
-        .hero-section { background: linear-gradient(135deg, var(--primary-blue) 0%, #00C6FF 100%); color: var(--white); padding: 60px 80px; text-align: center; position: relative; }
-        .hero-section h1 { font-size: 48px; font-weight: 800; margin-bottom: 10px; letter-spacing: -1px; }
-        .hero-section p { font-size: 20px; font-weight: 400; opacity: 0.9; margin-bottom: 30px; }
-        .badge-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
-        .badge { background-color: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); padding: 8px 20px; border-radius: 25px; font-size: 14px; font-weight: 600; display: flex; align-items: center; }
-        .badge svg { margin-right: 8px; }
 
-        /* Main Content Layout */
-        .content-wrapper { display: flex; padding: 40px 0; }
-        .sidebar { width: 280px; flex-shrink: 0; padding: 0 40px 0 80px; border-right: 1px solid var(--border-color); }
-        .main-area { flex-grow: 1; padding: 0 80px 0 40px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        /* Sidebar Sections */
-        .sidebar-section { margin-bottom: 40px; }
-        .sidebar-title { font-size: 18px; font-weight: 700; color: var(--primary-blue); margin-bottom: 15px; border-bottom: 2px solid var(--primary-blue); padding-bottom: 5px; }
-        .sidebar-item { font-size: 14px; margin-bottom: 10px; word-break: break-word; display: flex; align-items: flex-start; }
-        .sidebar-item strong { margin-right: 8px; color: var(--dark-gray); }
-        .sidebar-item svg { margin-right: 8px; flex-shrink: 0; margin-top: 2px; }
-        .sidebar-list { list-style: none; padding: 0; margin: 0; }
-        .sidebar-list li { font-size: 14px; margin-bottom: 8px; position: relative; padding-left: 18px; }
-        .sidebar-list li::before { content: '•'; color: var(--primary-blue); position: absolute; left: 0; top: 0; font-weight: bold; }
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-        /* Main Area Sections */
-        .section-title { font-size: 28px; font-weight: 700; color: var(--dark-gray); margin-top: 0; margin-bottom: 30px; position: relative; padding-bottom: 10px; }
-        .section-title::after { content: ''; position: absolute; left: 0; bottom: 0; width: 60px; height: 3px; background-color: var(--primary-blue); border-radius: 2px; }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-        .summary-box { background-color: var(--light-blue); padding: 25px; border-radius: 8px; margin-bottom: 40px; }
-        .summary-box p { margin: 0; font-size: 16px; color: var(--dark-gray); }
+        /* ===== Header Section ===== */
+        header {
+            padding: 100px 0 60px;
+            text-align: left;
+        }
 
-        .exp-item { margin-bottom: 45px; padding-bottom: 25px; border-bottom: 1px dashed var(--border-color); }
-        .exp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .exp-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 10px; }
-        .company-info { display: flex; flex-direction: column; align-items: flex-start; }
-        .company-name { font-size: 22px; font-weight: 700; color: var(--dark-gray); margin-bottom: 2px; }
-        .role { font-size: 16px; font-weight: 600; color: var(--primary-blue); }
-        .period { font-size: 14px; color: var(--medium-gray); font-weight: 500; }
-        
-        .task-list { list-style: none; padding: 0; margin-top: 15px; }
-        .task-item { font-size: 15px; margin-bottom: 10px; position: relative; padding-left: 25px; }
-        .task-item::before { content: '✔'; color: var(--primary-blue); position: absolute; left: 0; top: 0; font-weight: bold; font-size: 16px; }
-        .task-main { font-weight: 600; color: var(--dark-gray); display: block; }
-        .task-sub { font-size: 14px; color: var(--medium-gray); margin-top: 3px; display: block; }
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid var(--primary-purple);
+            color: var(--primary-purple);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
 
-        /* New Portfolio Sections */
-        .portfolio-section { margin-bottom: 50px; }
-        .portfolio-section .section-title { margin-bottom: 20px; }
-        .pipeline-diagram { text-align: center; margin-bottom: 40px; background-color: var(--white); padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .pipeline-diagram img { max-width: 100%; height: auto; border-radius: 4px; border: 1px solid var(--border-color); }
+        h1 {
+            font-size: 56px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-        .artifacts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 20px; }
-        .artifact-card { background-color: var(--white); border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); overflow: hidden; transition: transform 0.2s ease-in-out; border: 1px solid var(--border-color); }
-        .artifact-card:hover { transform: translateY(-5px); }
-        .artifact-card-header { background-color: var(--primary-blue); color: var(--white); padding: 15px 20px; font-size: 18px; font-weight: 700; }
-        .artifact-card-body { padding: 20px; }
-        .artifact-card-body p { font-size: 14px; color: var(--medium-gray); margin-bottom: 15px; }
-        .artifact-card-body a { display: inline-block; background-color: var(--light-blue); color: var(--primary-blue); padding: 8px 15px; border-radius: 5px; text-decoration: none; font-weight: 600; font-size: 14px; transition: background-color 0.2s ease; }
-        .artifact-card-body a:hover { background-color: var(--primary-blue); color: var(--white); }
+        .hero-desc {
+            font-size: 20px;
+            color: var(--text-sub);
+            max-width: 700px;
+            margin-bottom: 40px;
+        }
 
-        .ai-orchestration { background-color: var(--light-blue); padding: 30px; border-radius: 8px; margin-bottom: 40px; text-align: center; }
-        .ai-orchestration h3 { font-size: 24px; color: var(--primary-blue); margin-bottom: 15px; }
-        .ai-orchestration p { font-size: 16px; color: var(--dark-gray); line-height: 1.8; }
-        .ai-orchestration .comparison-table { width: 100%; border-collapse: collapse; margin-top: 25px; }
-        .ai-orchestration .comparison-table th, .ai-orchestration .comparison-table td { border: 1px solid var(--border-color); padding: 12px; text-align: left; font-size: 14px; }
-        .ai-orchestration .comparison-table th { background-color: var(--primary-blue); color: var(--white); font-weight: 600; }
-        .ai-orchestration .comparison-table td { background-color: var(--white); }
-        .ai-orchestration .comparison-table td strong { color: var(--primary-blue); }
+        .contact-bar {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
 
-        /* Footer */
-        .footer { text-align: center; padding: 30px; font-size: 13px; color: var(--medium-gray); background-color: var(--f8f9fa); border-top: 1px solid var(--border-color); margin-top: 50px; }
+        .contact-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s;
+        }
+
+        .contact-link:hover {
+            color: var(--primary-purple);
+        }
+
+        /* ===== Narrative Section (기승전결) ===== */
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 80px 0 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 32px;
+            background: var(--primary-purple);
+            border-radius: 2px;
+        }
+
+        .narrative-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .narrative-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 16px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .narrative-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-purple);
+        }
+
+        .narrative-card .step {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--primary-purple);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .narrative-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .narrative-card p {
+            font-size: 14px;
+            color: var(--text-sub);
+        }
+
+        /* ===== Pipeline Section (세련된 시각화) ===== */
+        .pipeline-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 50px;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .pipeline-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .flow-item {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+            z-index: 2;
+        }
+
+        .flow-icon {
+            width: 60px;
+            height: 60px;
+            background: #1e1e24;
+            border: 2px solid var(--border-color);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 24px;
+            transition: all 0.3s;
+        }
+
+        .flow-item:hover .flow-icon {
+            border-color: var(--primary-purple);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+        }
+
+        .flow-label {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .flow-sub {
+            font-size: 12px;
+            color: var(--text-sub);
+            margin-top: 5px;
+        }
+
+        .pipeline-line {
+            position: absolute;
+            top: 30px;
+            left: 50px;
+            right: 50px;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary-blue), var(--primary-purple));
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        /* ===== Artifacts Section ===== */
+        .artifact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .artifact-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 20px 30px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .artifact-item:hover {
+            background: #1e1e24;
+            border-color: var(--text-sub);
+        }
+
+        .artifact-info h4 {
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .artifact-info p {
+            font-size: 14px;
+            color: var(--text-sub);
+        }
+
+        .btn-github {
+            padding: 8px 16px;
+            background: #262626;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ===== Experience Section ===== */
+        .exp-item {
+            margin-bottom: 40px;
+            padding-left: 30px;
+            border-left: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .exp-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 9px;
+            height: 9px;
+            background: var(--primary-purple);
+            border-radius: 50%;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .exp-title h3 {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+
+        .exp-title .company {
+            color: var(--primary-purple);
+            font-weight: 600;
+        }
+
+        .exp-period {
+            font-size: 14px;
+            color: var(--text-sub);
+        }
+
+        .exp-content ul {
+            list-style: none;
+        }
+
+        .exp-content li {
+            font-size: 15px;
+            color: var(--text-sub);
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .exp-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary-purple);
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            padding: 80px 0 40px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            margin-top: 100px;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: var(--text-sub);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            h1 { font-size: 40px; }
+            .pipeline-flow { flex-direction: column; }
+            .pipeline-line { display: none; }
+            .exp-header { flex-direction: column; gap: 10px; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="hero-section">
-            <h1>성기현 · QA 엔지니어</h1>
-            <p>사용자 경험의 빈틈을 메우는 6.9년차 실무형 QA 전문가</p>
-            <div class="badge-container">
-                <span class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bot"><path d="M12 8V4H8"/><path d="M22 7.2L12 2 2 7.2V18L12 22 22 18Z"/><path d="M12 22V14"/><path d="M12 14H6"/></svg>AI 기반 자동화</span>
-                <span class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>코드 0줄 구축</span>
-                <span class="badge"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-workflow"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg>MCP 5개 연동</span>
+        <!-- Header -->
+        <header>
+            <span class="tag">QA ENGINEER · 6.9 YEARS</span>
+            <h1>성기현</h1>
+            <p class="hero-desc">
+                단순한 테스터를 넘어, <strong>LLM과 MCP를 결합한 자율 QA 파이프라인</strong>을 구축합니다. 
+                벙커키즈의 AI 서비스를 위해 설계된 5가지 MCP 서버 오케스트레이션을 확인하세요.
+            </p>
+            <div class="contact-bar">
+                <a href="mailto:kihyun.qa@gmail.com" class="contact-link">📧 kihyun.qa@gmail.com</a>
+                <a href="tel:01087329690" class="contact-link">📱 010-8732-9690</a>
+                <a href="https://github.com/kihyunqa" target="_blank" class="contact-link">🔗 GitHub</a>
+            </div>
+        </header>
+
+        <!-- [기승전결] Narrative -->
+        <h2 class="section-title">AI QA NARRATIVE</h2>
+        <div class="narrative-grid">
+            <div class="narrative-card">
+                <span class="step">Act 1. 기</span>
+                <h3>기존 QA의 한계</h3>
+                <p>반복적인 수동 테스트와 자동화 코드 유지보수의 늪. 급변하는 AI 서비스 속도를 따라가지 못하는 전통적 방식의 병목을 진단합니다.</p>
+            </div>
+            <div class="narrative-card">
+                <span class="step">Act 2. 승</span>
+                <h3>LLM + MCP 해법</h3>
+                <p>AI가 도구를 직접 제어하는 MCP(Model Context Protocol) 도입. 단순 생성을 넘어 '실행'하는 AI 에이전트의 가능성을 확인합니다.</p>
+            </div>
+            <div class="narrative-card">
+                <span class="step">Act 3. 전</span>
+                <h3>자율 파이프라인</h3>
+                <p>5가지 MCP 서버를 유기적으로 연동. 명세 분석부터 TC 생성, 테스트 실행, 결과 배포까지 전 과정을 자동화합니다.</p>
+            </div>
+            <div class="narrative-card">
+                <span class="step">Act 4. 결</span>
+                <h3>AI QA 아키텍트</h3>
+                <p>생산성 10배 향상. QA 엔지니어는 이제 품질 시스템을 설계하고 혁신하는 아키텍트로 진화해야 합니다.</p>
             </div>
         </div>
 
-        <div class="content-wrapper">
-            <!-- 사이드바 -->
-            <div class="sidebar">
-                <div class="sidebar-section">
-                    <div class="sidebar-title">연락처</div>
-                    <div class="sidebar-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>010-8732-9690</div>
-                    <div class="sidebar-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.93 1.93 0 0 1-2.06 0L2 7"/></svg>kihyun.qa@gmail.com</div>
-                    <div class="sidebar-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>서울 중랑구 신내동</div>
+        <!-- Pipeline Visualization -->
+        <h2 class="section-title">QA AUTOMATION PIPELINE</h2>
+        <div class="pipeline-container">
+            <div class="pipeline-line"></div>
+            <div class="pipeline-flow">
+                <div class="flow-item">
+                    <div class="flow-icon">📝</div>
+                    <div class="flow-label">기능 명세 분석</div>
+                    <div class="flow-sub">LLM Analysis</div>
                 </div>
-
-                <div class="sidebar-section">
-                    <div class="sidebar-title">보유 기술</div>
-                    <div class="sidebar-sub-title">협업 및 이슈 관리</div>
-                    <ul class="sidebar-list">
-                        <li>Jira, Slack, Notion, Teams, Confluence</li>
-                    </ul>
-                    
-                    <div class="sidebar-sub-title">자동화 및 API 검증</div>
-                    <ul class="sidebar-list">
-                        <li>Cypress, Swagger</li>
-                    </ul>
-                    
-                    <div class="sidebar-sub-title">검증 환경</div>
-                    <ul class="sidebar-list">
-                        <li>iOS, Android, 웹, IoT, AI 음성 시스템, 반도체 공정 시뮬레이션</li>
-                    </ul>
-                    
-                    <div class="sidebar-sub-title">QA 역량</div>
-                    <ul class="sidebar-list">
-                        <li>시나리오 설계, 회귀 테스트, 탐색적 테스트, 재현 조건 분석</li>
-                    </ul>
+                <div class="flow-item">
+                    <div class="flow-icon">🧪</div>
+                    <div class="flow-label">TC 자동 생성</div>
+                    <div class="flow-sub">Filesystem MCP</div>
                 </div>
-
-                <div class="sidebar-section">
-                    <div class="sidebar-title">학력 사항</div>
-                    <div class="sidebar-item"><strong>강원대학교</strong> 방송영상학과 졸업</div>
-                    <div class="sidebar-item">(2008.03 — 2015.02)</div>
+                <div class="flow-item">
+                    <div class="flow-icon">⚡</div>
+                    <div class="flow-label">E2E 테스트 실행</div>
+                    <div class="flow-sub">Playwright MCP</div>
                 </div>
-            </div>
-
-            <!-- 메인 본문 -->
-            <div class="main-area">
-                <div class="section-title">핵심 요약</div>
-                <div class="summary-box">
-                    <p>다양한 도메인(모바일, IoT, AI, 반도체) 검증 경험을 바탕으로, 벙커키즈의 AI 캐릭터 채팅 서비스 품질 최적화에 즉시 기여하겠습니다. 특히 AI 음성 시스템 검증 경험을 통해 <strong>자연어 기반 AI 에이전트의 응답 정확성 및 컨텍스트 유지 여부 검증</strong>에 강점을 가지고 있습니다.</p>
+                <div class="flow-item">
+                    <div class="flow-icon">📦</div>
+                    <div class="flow-label">결과 자동 배포</div>
+                    <div class="flow-sub">GitHub MCP</div>
                 </div>
-
-                <div class="portfolio-section">
-                    <div class="section-title">QA 자동화 파이프라인</div>
-                    <div class="pipeline-diagram">
-                        <img src="pipeline.png" alt="QA Automation Pipeline Diagram">
-                        <p style="margin-top: 15px; font-size: 14px; color: var(--medium-gray);">Manus AI와 MCP를 활용한 QA 자동화 워크플로우 (기능 명세 → TC 생성 → 테스트 실행 → 결과 배포)</p>
-                    </div>
-                </div>
-
-                <div class="portfolio-section">
-                    <div class="section-title">증거 자료 (Artifacts)</div>
-                    <div class="artifacts-grid">
-                        <div class="artifact-card">
-                            <div class="artifact-card-header">QA 전략 및 방법론</div>
-                            <div class="artifact-card-body">
-                                <p>성기현 QA 엔지니어의 품질 철학 및 핵심 검증 전략을 담은 문서입니다.</p>
-                                <a href="STRATEGY.md" target="_blank">문서 보기</a>
-                            </div>
-                        </div>
-                        <div class="artifact-card">
-                            <div class="artifact-card-header">샘플 테스트 케이스</div>
-                            <div class="artifact-card-body">
-                                <p>AI 챗봇의 답변 정확성 및 적절성을 검증하는 샘플 TC입니다.</p>
-                                <a href="artifacts/sample_tc_chatbot.md" target="_blank">TC 보기</a>
-                            </div>
-                        </div>
-                        <div class="artifact-card">
-                            <div class="artifact-card-header">샘플 결함 리포트</div>
-                            <div class="artifact-card-body">
-                                <p>AI 챗봇의 할루시네이션 현상에 대한 상세 결함 리포트입니다.</p>
-                                <a href="artifacts/sample_defect_report_chatbot.md" target="_blank">리포트 보기</a>
-                            </div>
-                        </div>
-                        <div class="artifact-card">
-                            <div class="artifact-card-header">Playwright E2E 테스트</div>
-                            <div class="artifact-card-body">
-                                <p>포트폴리오 웹사이트의 주요 기능 및 정보 검증 자동화 코드입니다.</p>
-                                <a href="tests/portfolio_check.spec.js" target="_blank">코드 보기</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-section">
-                    <div class="section-title">AI 오케스트레이션</div>
-                    <div class="ai-orchestration">
-                        <h3>클로드 vs Manus: AI 파트너 활용 비교</h3>
-                        <p>QA 엔지니어로서 AI 도구를 단순 활용하는 것을 넘어, 각 AI의 특성을 이해하고 최적의 워크플로우를 설계하는 AI 오케스트레이션 역량을 보여줍니다.</p>
-                        <table class="comparison-table">
-                            <thead>
-                                <tr>
-                                    <th>구분</th>
-                                    <th>클로드 (Claude)</th>
-                                    <th>Manus (현재 프로젝트)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><strong>작업 기간</strong></td>
-                                    <td>약 1개월</td>
-                                    <td>약 5분 (핵심 구축 시간)</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>주요 역할</strong></td>
-                                    <td>아이디어 구체화, 코드 생성 가이드</td>
-                                    <td><strong>자율적 실행, MCP 연동, 결과물 배포</strong></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>활용 방식</strong></td>
-                                    <td>대화 기반 지시 및 코드 복사/붙여넣기</td>
-                                    <td><strong>API 및 CLI 기반 직접 제어, 자동화 파이프라인 구축</strong></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>결과물</strong></td>
-                                    <td>QA 포트폴리오 (코드, 문서)</td>
-                                    <td><strong>QA 포트폴리오 (코드, 문서, 자동화 파이프라인, 웹 배포)</strong></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="section-title">경력 사항</div>
-
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <div class="company-info">
-                            <span class="company-name">두플</span>
-                            <span class="role">QA 파트장</span>
-                        </div>
-                        <span class="period">2024.11 — 2025.02 (4개월)</span>
-                    </div>
-                    <ul class="task-list">
-                        <li class="task-item">
-                            <span class="task-main">반도체 공정 시뮬레이션 시스템 검증</span>
-                            <span class="task-sub">공정 변수 변동에 따른 결과 정합성 검증 및 오차 재현·검증</span>
-                        </li>
-                        <li class="task-item">
-                            <span class="task-main">QA 프로세스 운영</span>
-                            <span class="task-sub">Jira 기반 이슈 트래킹 및 유관 부서 협업 현황 공유</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <div class="company-info">
-                            <span class="company-name">IMS Mobility</span>
-                            <span class="role">QA 대리</span>
-                        </div>
-                        <span class="period">2022.03 — 2024.02 (2년)</span>
-                    </div>
-                    <ul class="task-list">
-                        <li class="task-item">
-                            <span class="task-main">모바일 앱 / 웹 / 백오피스 통합 검증</span>
-                            <span class="task-sub">차량 호출·결제·반납 전 과정 사용자 흐름 기반 시나리오 설계 및 검증</span>
-                        </li>
-                        <li class="task-item">
-                            <span class="task-main">기술 기반 품질 검증 수행</span>
-                            <span class="task-sub">Swagger 기반 API 정합성 직접 검증 및 Cypress 활용 시나리오 자동화</span>
-                        </li>
-                        <li class="task-item">
-                            <span class="task-main">결제 시스템 검증</span>
-                            <span class="task-sub">국내 주요 카드사 및 간편결제 승인·취소 전 흐름 검증</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="exp-item">
-                    <div class="exp-header">
-                        <div class="company-info">
-                            <span class="company-name">모비프렌 (삼성전자 파트너)</span>
-                            <span class="role">QA 주임</span>
-                        </div>
-                        <span class="period">2017.09 — 2022.01 (4년 4개월)</span>
-                    </div>
-                    <ul class="task-list">
-                        <li class="task-item">
-                            <span class="task-main">AI 음성 인식 및 IoT 연동 품질 검증</span>
-                            <span class="task-sub">Bixby AI 음성 인식 정확도 및 응답 품질, 소음 환경별 안정성 검증</span>
-                        </li>
-                        <li class="task-item">
-                            <span class="task-main">멀티 디바이스 연동성 검증</span>
-                            <span class="task-sub">SmartThings 다중 기기 연동 및 상태 동기화 기능 검증</span>
-                        </li>
-                        <li class="task-item">
-                            <span class="task-main">이슈 분석 및 원인 파악</span>
-                            <span class="task-sub">로그 추출 및 분석을 통한 이슈 재현 및 수정 확인 후 개발팀 전달</span>
-                        </li>
-                    </ul>
+                <div class="flow-item">
+                    <div class="flow-icon">🔔</div>
+                    <div class="flow-label">실시간 알림</div>
+                    <div class="flow-sub">Slack/Notion</div>
                 </div>
             </div>
         </div>
-        <div class="footer">
-            Built with Manus AI & MCP. A comparison project with Claude's version.
+
+        <!-- Evidence (Artifacts) -->
+        <h2 class="section-title">TECHNICAL EVIDENCE</h2>
+        <div class="artifact-list">
+            <a href="https://github.com/kihyunqa/qa-portfolio-manus/blob/main/docs/mcp_technical_whitepaper.md" target="_blank" class="artifact-item">
+                <div class="artifact-info">
+                    <h4>MCP 기술 백서</h4>
+                    <p>AI 기반 QA 자동화의 설계 철학과 기승전결 서사를 담은 상세 기술 문서</p>
+                </div>
+                <div class="btn-github">GitHub에서 보기 ↗</div>
+            </a>
+            <a href="https://github.com/kihyunqa/qa-portfolio-manus/blob/main/artifacts/sample_tc_chatbot.md" target="_blank" class="artifact-item">
+                <div class="artifact-info">
+                    <h4>샘플 테스트 케이스</h4>
+                    <p>AI 챗봇의 답변 정확성 및 적절성을 검증하는 실제 TC 파일</p>
+                </div>
+                <div class="btn-github">GitHub에서 보기 ↗</div>
+            </a>
+            <a href="https://github.com/kihyunqa/qa-portfolio-manus/blob/main/artifacts/sample_defect_report_chatbot.md" target="_blank" class="artifact-item">
+                <div class="artifact-info">
+                    <h4>샘플 결함 리포트</h4>
+                    <p>AI 할루시네이션 현상을 정밀 분석한 결함 보고서</p>
+                </div>
+                <div class="btn-github">GitHub에서 보기 ↗</div>
+            </a>
+            <a href="https://github.com/kihyunqa/qa-portfolio-manus/blob/main/tests/portfolio_check.spec.js" target="_blank" class="artifact-item">
+                <div class="artifact-info">
+                    <h4>Playwright 자동화 코드</h4>
+                    <p>E2E 테스트를 수행하는 실제 JavaScript 테스트 스크립트</p>
+                </div>
+                <div class="btn-github">GitHub에서 보기 ↗</div>
+            </a>
         </div>
+
+        <!-- Experience -->
+        <h2 class="section-title">WORK EXPERIENCE</h2>
+        <div class="exp-item">
+            <div class="exp-header">
+                <div class="exp-title">
+                    <h3>QA Part Leader</h3>
+                    <span class="company">두플 (DUBLE)</span>
+                </div>
+                <span class="exp-period">2024.11 — 2025.02</span>
+            </div>
+            <div class="exp-content">
+                <ul>
+                    <li>반도체 공정 시뮬레이션 시스템 검증: 공정 변수 기반 결과 정합성 분석</li>
+                    <li>QA 프로세스 구축: Jira 기반 이슈 트래킹 및 유관 부서 협업 리드</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-header">
+                <div class="exp-title">
+                    <h3>QA Engineer (Senior)</h3>
+                    <span class="company">IMS Mobility</span>
+                </div>
+                <span class="exp-period">2022.03 — 2024.02</span>
+            </div>
+            <div class="exp-content">
+                <ul>
+                    <li>모바일 앱/웹/백오피스 통합 검증: 차량 호출 및 결제 시스템 전 과정 시나리오 설계</li>
+                    <li>기술 기반 품질 검증: Swagger API 검증 및 Cypress 활용 자동화 구축</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-header">
+                <div class="exp-title">
+                    <h3>QA Engineer (Junior)</h3>
+                    <span class="company">모비프렌 (삼성전자 파트너)</span>
+                </div>
+                <span class="exp-period">2017.09 — 2022.01</span>
+            </div>
+            <div class="exp-content">
+                <ul>
+                    <li>AI 음성 인식 및 IoT 연동 검증: Bixby 정확도 및 SmartThings 연동성 검증</li>
+                    <li>이슈 분석 및 로그 추출: 데이터 기반 결함 원인 분석 및 개발팀 전달</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p class="footer-text">Built with Manus AI & MCP. Focused on Execution, not just Ideas.</p>
+        </footer>
     </div>
 </body>
 </html>
